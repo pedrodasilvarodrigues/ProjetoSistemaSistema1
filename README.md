@@ -9,6 +9,8 @@ Currently, two official plugins are available:
 
 ## React Compiler
 
+
+## Dica Extra
 Ao Aplicar esse git clone lembre de instalar o banco de dados 
 npx json-server --watch db.json --port 3000
 

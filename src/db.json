@@ -52,9 +52,25 @@
       "cidade": "Muriaé"
     },
     {
+<<<<<<< HEAD
       "id": "4",
       "nome": "Fertilizantes do Vale",
       "cidade": "Miraí"
+=======
+      "id": "78bf",
+      "nome": "reinaldo",
+      "cidade": "teste"
+    },
+    {
+      "id": "b431",
+      "nome": "xxxxxxxxxx",
+      "cidade": "xxxxxxxxxxxxx"
+    },
+    {
+      "id": "805e",
+      "nome": "Diegão ",
+      "cidade": "Muriaé "
+>>>>>>> e6d94b9242c2677c751cfcd0c494c8b42dd7071c
     }
   ],
   "produtos": [
@@ -77,6 +93,7 @@
       "clienteNome": "Fazenda Boa Vista",
       "produtoNome": "Fertilizante NPK",
       "quantidade": 10,
+      "fornecedorNome": "AgroFornecedores Ltda",
       "valorTotal": 1500
     },
     {
@@ -96,5 +113,30 @@
       "data": "03/03/2026"
     }
   ],
+<<<<<<< HEAD
+=======
+  "fornecedores": [
+    {
+      "id": "1",
+      "nome": "AgroFornecedores Ltda",
+      "cidade": "Muriaé"
+    },
+    {
+      "id": "2",
+      "nome": "Sementes e Fertilizantes S.A.",
+      "cidade": "Miraí"
+    },
+    {
+      "id": "3",
+      "nome": "AgroTech Distribuidora",
+      "cidade": "Muriaé"
+    },
+    {
+      "id": "4",
+      "nome": "Fertilizantes do Vale",
+      "cidade": "Miraí"
+    }
+  ],
+>>>>>>> e6d94b9242c2677c751cfcd0c494c8b42dd7071c
   "$schema": "./node_modules/json-server/schema.json"
 }

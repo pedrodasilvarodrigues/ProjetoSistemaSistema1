@@ -9,6 +9,11 @@ Currently, two official plugins are available:
 
 ## React Compiler
 
+
+## Dica Extra
+Ao Aplicar esse git clone lembre de instalar o banco de dados 
+"npx json-server --watch db.json --port 3000"
+
 The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
 
 ## Acesso a Base de dados

@@ -3,6 +3,8 @@ import { api } from "../../Services/api";
 import { toast } from "sonner";
 import { FormCliente } from "./FormCliente"; // Importação do novo formulário
 
+
+
 export function Clientes() {
   const [clientes, setClientes] = useState([]);
   const [vendas, setVendas] = useState([]);
@@ -11,6 +13,9 @@ export function Clientes() {
     api.get("/clientes").then((res) => setClientes(res.data));
     api.get("/vendas").then((res) => setVendas(res.data));
   }
+
+
+  
 
   useEffect(() => {
     carregarDados();
@@ -29,7 +34,7 @@ export function Clientes() {
     if (window.confirm(`Excluir a fazenda ${nomeFazenda} do sistema?`)) {
       try {
         await api.delete(`/clientes/${id}`);
-        toast.success("Cliente removido com sucesso!");
+        ("Cliente removido com sucesso!");
         carregarDados();
       } catch (error) {
         toast.error("Erro ao excluir cliente.");
@@ -54,9 +59,10 @@ export function Clientes() {
           >
             <div>
               <h2 className="text-xl font-bold text-gray-800">
-                {cliente.nomeFazenda}
+                {cliente.nomeFazenda} - {cliente.nomeWhatsApp}
               </h2>
               <p className="text-gray-500 text-sm">{cliente.proprietario}</p>
+              <p className="text-gray-500 text-sm">{cliente.email}</p>
             </div>
 
             <button

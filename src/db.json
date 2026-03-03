@@ -11,34 +11,50 @@
       "cidade": "Miraí"
     },
     {
-      "id": "1303",
-      "nomeFazenda": "fazenda teste",
+      "id": "2",
+      "nomeFazenda": "Sítio do Cedro",
+      "cidade": "Miraí"
+    },
+    {
+      "id": "2",
+      "nomeFazenda": "Sítio do Cedro",
+      "cidade": "Miraí"
+    },
+    {
+      "id": "baf6",
+      "nomeFazenda": "Fazenda Boa Vista ",
+      "proprietario": "CAl",
+      "nomeWhatsApp": "(11) 999999999",
+      "email": "0001083315@senaimgaluno.com.br"
+    },
+    {
+      "id": "f658",
+      "nomeFazenda": "earh",
+      "proprietario": "dhz",
+      "nomeWhatsApp": "a\\gre4y3",
+      "email": "w4y3q"
+    }
+  ],
+  "fornecedores": [
+    {
+      "id": "1",
+      "nome": "AgroFornecedores Ltda",
       "cidade": "Muriaé"
     },
     {
-      "id": "9c6d",
-      "nomeFazenda": "sdfsdf",
-      "cidade": "sfsdfsdfsdf"
+      "id": "2",
+      "nome": "Sementes e Fertilizantes S.A.",
+      "cidade": "Miraí"
     },
     {
-      "id": "7858",
-      "nomeFazenda": "sdfdsfdsf",
-      "cidade": "sdfsdfsdfsd"
-    },
-    {
-      "id": "78bf",
-      "nomeFazenda": "reinaldo",
-      "cidade": "teste"
-    },
-    {
-      "id": "b431",
-      "nomeFazenda": "xxxxxxxxxx",
-      "cidade": "xxxxxxxxxxxxx"
-    },
-    {
-      "id": "61ba",
-      "nomeFazenda": "Diegão",
+      "id": "3",
+      "nome": "AgroTech Distribuidora",
       "cidade": "Muriaé"
+    },
+    {
+      "id": "4",
+      "nome": "Fertilizantes do Vale",
+      "cidade": "Miraí"
     }
   ],
   "produtos": [
@@ -69,6 +85,14 @@
       "produtoNome": "Fertilizante NPK 10-10-10",
       "quantidade": 3,
       "valorTotal": 450,
+      "data": "03/03/2026"
+    },
+    {
+      "id": "4aa6",
+      "clienteNome": "Fazenda Boa Vista",
+      "produtoNome": "Fertilizante NPK 10-10-10",
+      "quantidade": 145,
+      "valorTotal": 21750,
       "data": "03/03/2026"
     }
   ],

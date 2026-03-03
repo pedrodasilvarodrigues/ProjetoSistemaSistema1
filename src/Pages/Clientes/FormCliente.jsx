@@ -3,17 +3,17 @@ import { api } from '../../Services/api';
 import { toast } from 'sonner';
 
 export function FormCliente({ onClienteCadastrado }) {
-  const [novoCliente, setNovoCliente] = useState({ nomeFazenda: '', proprietario: '' });
+  const [novoCliente, setNovoCliente] = useState({ nomeFazenda: '', proprietario: '', nomeWhatsApp: '', email: '' });
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       await api.post('/clientes', novoCliente);
       toast.success("Fazenda cadastrada com sucesso!");
-      setNovoCliente({ nomeFazenda: '', proprietario: '' });
+      setNovoCliente({ nomeFazenda: '', proprietario: '', nomeWhatsApp: '', email: '' });
       onClienteCadastrado();
     } catch (error) {
-      toast.error("Erro ao cadastrar cliente.");
+      toast.warning("Erro ao cadastrar cliente.");
     }
   }
 
@@ -40,6 +40,30 @@ export function FormCliente({ onClienteCadastrado }) {
           placeholder="Nome do produtor"
           value={novoCliente.proprietario}
           onChange={e => setNovoCliente({...novoCliente, proprietario: e.target.value})}
+        />
+      </div>
+
+            <div>
+        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">WhatsApp</label>
+        <input 
+          required
+          type="text"
+          className="w-full border p-2 rounded-md outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Ex: (11) 99999-9999"
+          value={novoCliente.nomeWhatsApp}
+          onChange={e => setNovoCliente({...novoCliente, nomeWhatsApp: e.target.value})}
+        />
+      </div>
+
+            <div>
+        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">E-Mail</label>
+        <input 
+          required
+          type="text"
+          className="w-full border p-2 rounded-md outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Ex: fazenda@dominio.com"
+          value={novoCliente.email}
+          onChange={e => setNovoCliente({...novoCliente, email: e.target.value})}
         />
       </div>
 

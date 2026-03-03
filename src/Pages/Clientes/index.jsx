@@ -1,41 +1,70 @@
 import { useEffect, useState } from "react";
 import { api } from "../../Services/api";
-// import { toast } from "sonner";
-
-// ... mantenha os imports anteriores e adicione:
-import { FormCliente } from "./FormCliente";
+import { toast } from "sonner";
+import { FormCliente } from "./FormCliente"; // Importação do novo formulário
 
 export function Clientes() {
   const [clientes, setClientes] = useState([]);
+  const [vendas, setVendas] = useState([]);
 
-  const carregarClientes = () => {
+  function carregarDados() {
     api.get("/clientes").then((res) => setClientes(res.data));
-  };
+    api.get("/vendas").then((res) => setVendas(res.data));
+  }
 
   useEffect(() => {
-    carregarClientes();
+    carregarDados();
   }, []);
 
+  async function excluirCliente(id, nomeFazenda) {
+    const temCompras = vendas.some((v) => v.clienteNome === nomeFazenda);
+
+    if (temCompras) {
+      toast.error(
+        "Proibido excluir: Este cliente já possui histórico de compras!",
+      );
+      return;
+    }
+
+    if (window.confirm(`Excluir a fazenda ${nomeFazenda} do sistema?`)) {
+      try {
+        await api.delete(`/clientes/${id}`);
+        toast.success("Cliente removido com sucesso!");
+        carregarDados();
+      } catch (error) {
+        toast.error("Erro ao excluir cliente.");
+      }
+    }
+  }
+
   return (
-    <div className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-3xl font-extrabold text-green-800 mb-6 italic">
-        AGROVIDA - Gestão
+    <div className="p-8 max-w-6xl mx-auto">
+      <h1 className="text-3xl font-black text-green-800 mb-8 tracking-tighter">
+        Painel de Clientes
       </h1>
 
-      {/* Aqui o Jadean insere os dados e o sistema atualiza a lista sozinha */}
-      <FormCliente aoSalvar={carregarClientes} />
+      {/* Reintegrando o formulário para Jadean e Joancélio */}
+      <FormCliente onClienteCadastrado={carregarDados} />
 
-      <h2 className="text-xl font-semibold mb-4 text-gray-700">
-        Clientes Atendidos
-      </h2>
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {clientes.map((cliente) => (
           <div
             key={cliente.id}
-            className="p-4 border-l-4 border-green-500 rounded shadow bg-white"
+            className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-start hover:shadow-md transition-shadow"
           >
-            <p className="font-bold uppercase">{cliente.nome}</p>
-            <p className="text-gray-500 italic text-sm">{cliente.cidade}</p>
+            <div>
+              <h2 className="text-xl font-bold text-gray-800">
+                {cliente.nomeFazenda}
+              </h2>
+              <p className="text-gray-500 text-sm">{cliente.proprietario}</p>
+            </div>
+
+            <button
+              onClick={() => excluirCliente(cliente.id, cliente.nomeFazenda)}
+              className="bg-red-50 text-red-600 px-3 py-1 rounded-md text-xs font-bold hover:bg-red-600 hover:text-white transition-all"
+            >
+              Excluir
+            </button>
           </div>
         ))}
       </div>

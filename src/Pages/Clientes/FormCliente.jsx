@@ -1,41 +1,51 @@
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { api } from '../../Services/api';
 import { toast } from 'sonner';
 
-export function FormCliente({ aoSalvar }) {
-  const { register, handleSubmit, reset } = useForm();
+export function FormCliente({ onClienteCadastrado }) {
+  const [novoCliente, setNovoCliente] = useState({ nomeFazenda: '', proprietario: '' });
 
-  // Função que envia o novo cliente para o db.json
-  const salvarDados = async (dados) => {
+  async function handleSubmit(e) {
+    e.preventDefault();
     try {
-      await api.post('/clientes', dados);
-      toast.success("Cliente cadastrado com sucesso!");
-      reset();    // Limpa os campos após salvar
-      aoSalvar(); // Chama a função para atualizar a lista automaticamente
+      await api.post('/clientes', novoCliente);
+      toast.success("Fazenda cadastrada com sucesso!");
+      setNovoCliente({ nomeFazenda: '', proprietario: '' });
+      onClienteCadastrado();
     } catch (error) {
       toast.error("Erro ao cadastrar cliente.");
     }
-  };
+  }
 
   return (
-    <form onSubmit={handleSubmit(salvarDados)} className="bg-gray-100 p-6 rounded-lg mb-8 shadow-inner">
-      <h2 className="text-lg font-bold mb-4 text-gray-700">Novo Levantamento de Dados</h2>
-      <div className="flex flex-col gap-3">
+    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl shadow-md mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 items-end border border-gray-100">
+      <div>
+        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Nome da Fazenda</label>
         <input 
-          {...register("nome", { required: true })} 
-          placeholder="Nome da Fazenda/Cliente" 
-          className="p-2 border rounded shadow-sm focus:ring-2 focus:ring-green-500 outline-none"
+          required
+          type="text"
+          className="w-full border p-2 rounded-md outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Ex: Fazenda Boa Vista"
+          value={novoCliente.nomeFazenda}
+          onChange={e => setNovoCliente({...novoCliente, nomeFazenda: e.target.value})}
         />
-        <input 
-          {...register("cidade", { required: true })} 
-          placeholder="Cidade" 
-          className="p-2 border rounded shadow-sm focus:ring-2 focus:ring-green-500 outline-none"
-        />
-        <button type="submit" className="bg-green-600 text-white font-bold py-2 rounded hover:bg-green-700 transition-colors">
-          Cadastrar Cliente
-        </button>
       </div>
+
+      <div>
+        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Proprietário</label>
+        <input 
+          required
+          type="text"
+          className="w-full border p-2 rounded-md outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Nome do produtor"
+          value={novoCliente.proprietario}
+          onChange={e => setNovoCliente({...novoCliente, proprietario: e.target.value})}
+        />
+      </div>
+
+      <button className="bg-green-700 text-white font-bold py-2 px-4 rounded-md hover:bg-green-800 transition-all shadow-lg">
+        + Cadastrar Cliente
+      </button>
     </form>
   );
 }
-

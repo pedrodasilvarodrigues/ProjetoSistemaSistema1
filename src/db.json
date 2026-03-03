@@ -2,38 +2,43 @@
   "clientes": [
     {
       "id": "1",
-      "nome": "Fazenda Boa Vista",
+      "nomeFazenda": "Fazenda Boa Vista",
       "cidade": "Muriaé"
     },
     {
       "id": "2",
-      "nome": "Sítio do Cedro",
+      "nomeFazenda": "Sítio do Cedro",
       "cidade": "Miraí"
     },
     {
       "id": "1303",
-      "nome": "fazenda teste",
+      "nomeFazenda": "fazenda teste",
       "cidade": "Muriaé"
     },
     {
       "id": "9c6d",
-      "nome": "sdfsdf",
+      "nomeFazenda": "sdfsdf",
       "cidade": "sfsdfsdfsdf"
     },
     {
       "id": "7858",
-      "nome": "sdfdsfdsf",
+      "nomeFazenda": "sdfdsfdsf",
       "cidade": "sdfsdfsdfsd"
     },
     {
       "id": "78bf",
-      "nome": "reinaldo",
+      "nomeFazenda": "reinaldo",
       "cidade": "teste"
     },
     {
       "id": "b431",
-      "nome": "xxxxxxxxxx",
+      "nomeFazenda": "xxxxxxxxxx",
       "cidade": "xxxxxxxxxxxxx"
+    },
+    {
+      "id": "61ba",
+      "nomeFazenda": "Diegão",
+      "cidade": "Muriaé"
     }
   ],
   "produtos": [
@@ -57,6 +62,15 @@
       "produtoNome": "Fertilizante NPK",
       "quantidade": 10,
       "valorTotal": 1500
+    },
+    {
+      "id": "92fb",
+      "clienteNome": "Fazenda Boa Vista",
+      "produtoNome": "Fertilizante NPK 10-10-10",
+      "quantidade": 3,
+      "valorTotal": 450,
+      "data": "03/03/2026"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
